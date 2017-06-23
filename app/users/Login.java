@@ -1,8 +1,5 @@
 package models.users;
 
-/**
- * Created by Glen on 09/03/2017.
- */
 public class Login {
     private String email;
     private String password;

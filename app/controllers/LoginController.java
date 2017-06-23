@@ -38,7 +38,7 @@ public class LoginController extends Controller{
         }
 
         if(session().get("role").equals("Admin")){
-            return redirect(routes.AdminController.adminFilm());
+            return redirect(routes.HomeController.index());
         }
         if(session().get("role").equals("Customer")){
             return redirect(routes.HomeController.index());
