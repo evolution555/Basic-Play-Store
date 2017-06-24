@@ -3,6 +3,16 @@
 
 # --- !Ups
 
+create table items (
+  product_id                    varchar(255) not null,
+  title                         varchar(255),
+  cost                          double,
+  description                   varchar(255),
+  catagory                      varchar(255),
+  constraint pk_items primary key (product_id)
+);
+create sequence id_gen;
+
 create table user (
   email                         varchar(255) not null,
   name                          varchar(255),
@@ -13,6 +23,9 @@ create table user (
 
 
 # --- !Downs
+
+drop table if exists items;
+drop sequence if exists id_gen;
 
 drop table if exists user;
 
