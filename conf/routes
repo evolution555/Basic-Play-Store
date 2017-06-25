@@ -3,21 +3,27 @@
 # ~~~~
 
 #HomeController
-GET         /                    controllers.HomeController.index
-GET         /store               controllers.HomeController.store
-GET         /login               controllers.HomeController.login
+GET         /                     controllers.HomeController.index
+GET         /store                controllers.HomeController.store
+GET         /login                controllers.HomeController.login
+GET         /signUp               controllers.HomeController.signUp
+
+#AdminController
+GET         /adminHome            controllers.AdminController.adminHome
+GET         /adminItems           controllers.AdminController.adminItems
 
 #LoginController
-GET         /logout              controllers.LoginController.logout
+GET         /logout               controllers.LoginController.logout
 
 
 
-POST        /loginSubmit         controllers.LoginController.loginSubmit
+POST        /loginSubmit          controllers.LoginController.loginSubmit
+POST        /addUserSubmit        controllers.HomeController.addUserSubmit
 
 # An example controller showing how to use dependency injection
-GET         /count               controllers.CountController.count
+GET         /count                controllers.CountController.count
 # An example controller showing how to write asynchronous code
-GET         /message             controllers.AsyncController.message
+GET         /message              controllers.AsyncController.message
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file        controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file         controllers.Assets.versioned(path="/public", file: Asset)

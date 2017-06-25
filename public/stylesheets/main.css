@@ -120,3 +120,43 @@ body {
 #loginBox {
     background-color: #191D1F;
 }
+.thumbnail{
+    margin-top: 70px;
+}
+.thumbnail p{
+    text-align: center;
+}
+
+#thumbnail {
+    height: 355px;
+    padding: 10px;
+}
+#itemTitle{
+    font-family: 'Allerta Stencil', sans-serif;
+    color: #191D1F;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#adminBody{
+    background-color: #191D1F;
+    background-image: none;
+    color: white;
+}
+
+#descriptionBox{
+    background-color: aqua;
+    color:#191D1F;
+    text-align: center;
+    height: 200px;
+    border-radius: 60px;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 18px;
+    float: right;
+    margin-top: 15px;
+}
