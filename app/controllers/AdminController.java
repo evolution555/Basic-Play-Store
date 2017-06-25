@@ -35,7 +35,8 @@ public class AdminController extends Controller {
 
     public Result adminItems(){
         User u = HomeController.getUserFromSession();
-        return ok(adminItems.render(u, env));
+        List<Items> allItems = Items.findAll();
+        return ok(adminItems.render(u, env, allItems));
     }
 
 }
