@@ -1,17 +1,11 @@
 package controllers;
 
-import controllers.*;
-import controllers.routes;
 import play.api.Environment;
 import play.mvc.*;
 
-import sun.rmi.runtime.Log;
 import views.html.*;
 import play.data.*;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.inject.Inject;
@@ -41,5 +35,8 @@ public class HomeController extends Controller {
         Form<Login> loginForm = formFactory.form(Login.class);
         return ok(login.render(loginForm));
     }
-
+    public Result store(){
+        List<Items> allItems = Items.findAll();
+        return ok(store.render(allItems, env));
+    }
 }

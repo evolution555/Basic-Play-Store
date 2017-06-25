@@ -35,7 +35,7 @@ public class User extends Model{
             return find.byId(id);
     }
 
-    //Find all users and return an arraylist
+    //Find all models.users and return an arraylist
     public static List<User> findAll(){
         return User.find.all();
     }

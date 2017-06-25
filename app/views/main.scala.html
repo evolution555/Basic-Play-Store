@@ -11,7 +11,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Creative - Start Bootstrap Theme</title>
+        <title>Coach Conlon</title>
 
             <!-- Bootstrap Core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -57,28 +57,31 @@
                         font-family: 'Tangerine', cursive;
                         font-size: 41px;
                         margin-bottom: 0;
-                        margin-top: 0;"><img src="/assets/images/logo.png" class="img-responsive" alt="" style="height: 33px;
-                        width: 120px; border-top: 0;"></a>
+                        margin-top: 0;
+                    "><img src="/assets/images/logo.png" class="img-responsive" alt="" style="height: 33px;
+                        width: 120px;
+                        border-top: 0;">
+                    </a>
                 </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a class="page-scroll" href="#services">Services</a>
+                            <a class="page-scroll" href="@routes.HomeController.index()#services">Services</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#about">About</a>
+                            <a class="page-scroll" href="@routes.HomeController.index()#about">About</a>
                         </li>
 
                         <li>
-                            <a class="page-scroll" href="#portfolio">Gallery</a>
+                            <a class="page-scroll" href="@routes.HomeController.index()#portfolio">Gallery</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#contact">Contact</a>
+                            <a class="page-scroll" href="@routes.HomeController.index()#contact">Contact</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="store.html">Store</a>
+                            <a class="page-scroll" href="@routes.HomeController.store()">Store</a>
                         </li>
                     </ul>
                 </div>
@@ -86,4 +89,4 @@
             </div>
                 <!-- /.container-fluid -->
         </nav>
-@content
+    @content
