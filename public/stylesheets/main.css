@@ -160,3 +160,13 @@ body {
     float: right;
     margin-top: 15px;
 }
+#label {
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #191D1F;
+}
+#imageSize img {
+    height: 350px;
+    width: 282px;
+    padding: 10px;
+}

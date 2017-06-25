@@ -11,15 +11,17 @@ GET         /signUp               controllers.HomeController.signUp
 #AdminController
 GET         /adminHome            controllers.AdminController.adminHome
 GET         /adminItems           controllers.AdminController.adminItems
-
+GET         /adminAddItem         controllers.AdminController.adminAddItem
 #LoginController
 GET         /logout               controllers.LoginController.logout
 
 
-
-POST        /loginSubmit          controllers.LoginController.loginSubmit
+#HomeController Post
 POST        /addUserSubmit        controllers.HomeController.addUserSubmit
-
+#LoginController Post
+POST        /loginSubmit          controllers.LoginController.loginSubmit
+#AdminController Post
+POST        /addItemSubmit        controllers.AdminController.addItemSubmit
 # An example controller showing how to use dependency injection
 GET         /count                controllers.CountController.count
 # An example controller showing how to write asynchronous code

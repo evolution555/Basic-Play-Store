@@ -4,12 +4,12 @@
 # --- !Ups
 
 create table items (
-  product_id                    varchar(255) not null,
+  item_id                       varchar(255) not null,
   title                         varchar(255),
   cost                          double,
   description                   varchar(255),
   catagory                      varchar(255),
-  constraint pk_items primary key (product_id)
+  constraint pk_items primary key (item_id)
 );
 create sequence id_gen;
 
