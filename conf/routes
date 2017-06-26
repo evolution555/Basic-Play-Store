@@ -7,7 +7,7 @@ GET         /                           controllers.HomeController.index
 GET         /store                      controllers.HomeController.store
 GET         /login                      controllers.HomeController.login
 GET         /signUp                     controllers.HomeController.signUp
-GET         /product                    controllers.HomeController.product
+GET         /product/:id                controllers.HomeController.product(id: String)
 
 #AdminController
 GET         /adminHome                  controllers.AdminController.adminHome

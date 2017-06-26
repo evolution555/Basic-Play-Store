@@ -80,9 +80,11 @@ public class HomeController extends Controller {
         return redirect(controllers.routes.HomeController.index());
     }
 
-    public Result product(){
+    public Result product(String id){
         User u = getUserFromSession();
-        return ok(product.render(u));
+        Item item = Item.find.byId(id);
+        List<Item> allItems = Item.findAll();
+        return ok(product.render(u, allItems,item ,env));
     }
 
 }

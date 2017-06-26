@@ -1,4 +1,4 @@
-@(user: models.users.User)
+@(user: models.users.User, items: List[Item], i: Item, env: play.api.Environment)
     @*
     * Call the `main` template with two arguments. The first
     * argument is a `String` with the title of the page, the second
@@ -11,7 +11,7 @@
             <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h3 id="homeHeading" style="font-size: 60px;padding-top: 30px;">Package Name</h3>
+                <h3 id="homeHeading" style="font-size: 60px;padding-top: 30px;">@i.getTitle</h3>
             </div>
         </div>
             <!-- /.row -->
@@ -20,12 +20,16 @@
         <div class="row">
 
             <div class="col-md-8">
-                <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+                @if(env.resource("public/images/Items/" + i.getItemId + ".jpg").isDefined) {
+                    <img class="img-responsive"  src="/assets/images/Items/@(i.getItemId + ".jpg")" />
+                } else {
+                    <img src="/assets/images/Items/noImage.jpg" />
+                }
             </div>
 
             <div class="col-md-4">
                 <h3 class="text-faded">Package Description</h3>
-                <p class="text-faded">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                <p class="text-faded">@i.getDescription</p>
                 <h3 class="text-faded">Project Details</h3>
                 <ul class="text-faded">
                     <li>Lorem Ipsum</li>

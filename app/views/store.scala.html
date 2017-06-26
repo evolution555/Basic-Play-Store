@@ -15,11 +15,16 @@
                 @for(i <- items) {
                     <div class="col-md-4 col-sm-10 hero-feature">
                         <div class="thumbnail">
-                            <img id="thumbnail" src="http://placehold.it/800x500" alt="">
+                            @if(env.resource("public/images/Items/" + i.getItemId + ".jpg").isDefined) {
+                                <img id="thumbnail" src="/assets/images/Items/@(i.getItemId + ".jpg")" />
+                            } else {
+                                <img id="thumbnail" src="/assets/images/Items/noImage.jpg" />
+                            }
                             <div class="caption">
                                 <h3 style="margin-top: -20px;" id="itemTitle">@i.getTitle</h3>
                                 <p>@i.getDescription</p>
                                 <p><b>€@i.getCost</b></p>
+                                <a href="@routes.HomeController.product(i.getItemId)" id="buttons"  class="btn btn-primary btn-xl page-scroll">More Info</a>
                                 <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Buy Now</a>
                             </div>
                         </div>

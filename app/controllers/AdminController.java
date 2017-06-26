@@ -134,7 +134,7 @@ public class AdminController extends Controller {
                 }
 
                 File file = uploaded.getFile();
-                file.renameTo(new File("public/images/Item/" + title + "." + extension));
+                file.renameTo(new File("public/images/Items/" + title + "." + extension));
             }
             return "Item Added";
         }
