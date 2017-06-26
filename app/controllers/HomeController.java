@@ -1,17 +1,11 @@
 package controllers;
 
-import controllers.*;
-import controllers.routes;
 import play.api.Environment;
 import play.mvc.*;
 
-import sun.rmi.runtime.Log;
 import views.html.*;
 import play.data.*;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.inject.Inject;
@@ -44,7 +38,7 @@ public class HomeController extends Controller {
     }
 
     public Result store() {
-        List<Items> allItems = Items.findAll();
+        List<Item> allItems = Item.findAll();
         return ok(store.render(allItems, env));
     }
 

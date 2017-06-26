@@ -1,8 +1,6 @@
 package controllers;
 
-import com.avaje.ebeaninternal.server.lib.util.Str;
 import play.api.Environment;
-import play.db.ebean.Transactional;
 import play.mvc.*;
 import views.html.AdminPages.*;
 import play.data.*;
@@ -35,19 +33,19 @@ public class AdminController extends Controller {
 
     public Result adminItems() {
         User u = HomeController.getUserFromSession();
-        List<Items> allItems = Items.findAll();
+        List<Item> allItems = Item.findAll();
         return ok(adminItems.render(u, env, allItems));
     }
 
     public Result adminAddItem() {
-        Items i = new Items();
+        Item i = new Item();
         User u = HomeController.getUserFromSession();
         return ok(adminAddItem.render(i, u, null));
     }
 
     public Result addItemSubmit() {
         DynamicForm df = formFactory.form().bindFromRequest();
-        Items i = new Items();
+        Item i = new Item();
         i.setTitle(df.get("title"));
         i.setDescription(df.get("description"));
         i.setCatagory(df.get("catagory"));
@@ -59,21 +57,62 @@ public class AdminController extends Controller {
 
         String saveImageMsg;
 
-        List<Items> allItemss = Items.findAll();
-        for (Items Items : allItemss) {
-            if (Items.getTitle().equals(i.getTitle())) {
-                return badRequest(adminAddItem.render(i, HomeController.getUserFromSession(), "Movie already in database."));
+        List<Item> allItems = Item.findAll();
+        for (Item item : allItems) {
+            if (Item.getTitle().equals(i.getTitle())) {
+                return badRequest(adminAddItem.render(i, HomeController.getUserFromSession(), "Item already in database."));
             }
         }
         i.save();
-
-        Http.MultipartFormData data = request().body().asMultipartFormData();
-        FilePart image = data.getFile("upload");
 
         flash("success", saveFile(i.getItemId(), image));
         return redirect(routes.AdminController.adminItems());
     }
 
+
+    public Result updateItem(String item){
+        Item Item = Item.find.byId(item);
+        return ok(adminUpdateItem.render(Item, HomeController.getUserFromSession(), null));
+    }
+
+    public Result updateItemSubmit(){
+        DynamicForm df = formFactory.form().bindFromRequest();
+        String title = df.get("title");
+        String description = df.get("description");
+        String catagory = df.get("catagory");
+        String id = df.get("id");
+
+        Item item = Item.find.byId(id);
+        double cost = 0;
+        try {
+            cost= (Double.parseDouble(df.get("cost"));
+        } catch (NumberFormatException e) {
+            return badRequest(adminAddItem.render(i, HomeController.getUserFromSession(), "Cost must be a number"));
+        }
+
+
+        item.setTitle(title);
+        item.setDescription(description);
+        item.setCost(cost);
+        item.setCatagory(catagory);
+        item.update();
+
+
+        flash("success", "Item Updated");
+        return redirect(routes.AdminController.adminItem());
+    }
+
+
+    public Result deleteItem(String title) {
+        Item i = Item.find.byId(title);
+        Item.find.ref(title).delete();
+        flash("success", "Item has been deleted.");
+
+        //Deleting image from folder.
+        File file = new File("public/images/Item/" + i.getItemId() + ".jpg");
+        file.delete();
+        return redirect(routes.AdminController.adminItem());
+    }
 
     //Image Save
     public String saveFile(String title, FilePart<File> uploaded) {
@@ -90,7 +129,7 @@ public class AdminController extends Controller {
                 }
 
                 File file = uploaded.getFile();
-                file.renameTo(new File("public/images/Items/" + title + "." + extension));
+                file.renameTo(new File("public/images/Item/" + title + "." + extension));
             }
             return "Item Added";
         }

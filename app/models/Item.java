@@ -9,7 +9,7 @@ import com.avaje.ebean.*;
  * Created by evan_ on 24/06/2017.
  */
 @Entity
-public class Items extends Model{
+public class Item extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_gen")
     private String itemId;
@@ -19,10 +19,10 @@ public class Items extends Model{
     private String catagory;
 
 
-    public static Finder<String, Items> find = new Finder<String, Items>(Items.class);
+    public static Finder<String, Item> find = new Finder<String, Item>(Item.class);
 
-    public static List<Items> findAll(){
-        return Items.find.all();
+    public static List<Item> findAll(){
+        return Item.find.all();
     }
 
     public String getItemId() {
