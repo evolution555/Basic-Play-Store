@@ -11,6 +11,8 @@ import javax.inject.Inject;
 import java.util.*;
 
 import play.mvc.Http.MultipartFormData.FilePart;
+import views.html.*;
+import views.html.AdminPages.adminUpdateItem;
 
 import java.io.*;
 
@@ -59,20 +61,23 @@ public class AdminController extends Controller {
 
         List<Item> allItems = Item.findAll();
         for (Item item : allItems) {
-            if (Item.getTitle().equals(i.getTitle())) {
+            if (item.getTitle().equals(i.getTitle())) {
                 return badRequest(adminAddItem.render(i, HomeController.getUserFromSession(), "Item already in database."));
             }
         }
         i.save();
+
+        Http.MultipartFormData data = request().body().asMultipartFormData();
+        FilePart image = data.getFile("upload");
 
         flash("success", saveFile(i.getItemId(), image));
         return redirect(routes.AdminController.adminItems());
     }
 
 
-    public Result updateItem(String item){
-        Item Item = Item.find.byId(item);
-        return ok(adminUpdateItem.render(Item, HomeController.getUserFromSession(), null));
+    public Result updateItem(String i){
+        Item item = Item.find.byId(i);
+        return ok(adminUpdateItem.render(item, HomeController.getUserFromSession(), null));
     }
 
     public Result updateItemSubmit(){
@@ -85,9 +90,9 @@ public class AdminController extends Controller {
         Item item = Item.find.byId(id);
         double cost = 0;
         try {
-            cost= (Double.parseDouble(df.get("cost"));
+            cost= (Double.parseDouble(df.get("cost")));
         } catch (NumberFormatException e) {
-            return badRequest(adminAddItem.render(i, HomeController.getUserFromSession(), "Cost must be a number"));
+            return badRequest(adminAddItem.render(item, HomeController.getUserFromSession(), "Cost must be a number"));
         }
 
 
@@ -99,7 +104,7 @@ public class AdminController extends Controller {
 
 
         flash("success", "Item Updated");
-        return redirect(routes.AdminController.adminItem());
+        return redirect(routes.AdminController.adminItems());
     }
 
 
@@ -111,7 +116,7 @@ public class AdminController extends Controller {
         //Deleting image from folder.
         File file = new File("public/images/Item/" + i.getItemId() + ".jpg");
         file.delete();
-        return redirect(routes.AdminController.adminItem());
+        return redirect(routes.AdminController.adminItems());
     }
 
     //Image Save

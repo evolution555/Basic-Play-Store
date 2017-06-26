@@ -3,13 +3,13 @@
 
 # --- !Ups
 
-create table items (
+create table item (
   item_id                       varchar(255) not null,
   title                         varchar(255),
   cost                          double,
   description                   varchar(255),
   catagory                      varchar(255),
-  constraint pk_items primary key (item_id)
+  constraint pk_item primary key (item_id)
 );
 create sequence id_gen;
 
@@ -24,7 +24,7 @@ create table user (
 
 # --- !Downs
 
-drop table if exists items;
+drop table if exists item;
 drop sequence if exists id_gen;
 
 drop table if exists user;
