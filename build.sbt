@@ -1,4 +1,4 @@
-name := """CoachConlonactivator"""
+name := """CoachConlon"""
 
 version := "1.0-SNAPSHOT"
 

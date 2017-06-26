@@ -12,7 +12,7 @@ import com.avaje.ebean.*;
 public class Items extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_gen")
-    private String productId;
+    private String itemId;
     private String title;
     private double cost;
     private String description;
@@ -25,12 +25,12 @@ public class Items extends Model{
         return Items.find.all();
     }
 
-    public String getProductId() {
-        return productId;
+    public String getItemId() {
+        return itemId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public String getTitle() {
