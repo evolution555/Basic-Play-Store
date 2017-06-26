@@ -1,5 +1,5 @@
 body {
-    background-image: url("/assets/images/camoG.jpg");
+    background-color: #191D1F;
 }
 
 #welcome {
@@ -8,19 +8,25 @@ body {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color: #33432E;
+    color: #191D1F;
+    border-image: url("/assets/images/camoG.jpg") 30 repeat;
+    border-image-width:0 0 5px 0;
 }
 
 .navbar-default .navbar-nav > li > a {
     color: white;
     border-color: #33432E;
-    background-color: #222222;
+    background-color: #191D1F;
+    border-image: url("/assets/images/camoG.jpg") 30 repeat;
+    border-image-width:0 0 5px 0;
 }
 
 .navbar-default .navbar-nav > li > a :visited {
     color: whitesmoke;
     border-color: #33432E;
-    background-color: #222222;
+    background-color: #191D1F;
+    border-image: url("/assets/images/camoG.jpg") 30 repeat;
+    border-image-width:0 0 5px 0;
 }
 
 .page-header {
@@ -29,7 +35,8 @@ body {
 
 #black-nav {
     background-color: #191D1F;
-    margin-bottom: 5px;
+    border-image: url("/assets/images/camoG.jpg") 30 repeat;
+    border-image-width:0 0 2px 0;
 }
 
 /*Fresh start*/
@@ -122,6 +129,8 @@ body {
 }
 .thumbnail{
     margin-top: 70px;
+    border-image: url("/assets/images/camoG.jpg") 30 repeat;
+    border-image-width:15px;
 }
 .thumbnail p{
     text-align: center;

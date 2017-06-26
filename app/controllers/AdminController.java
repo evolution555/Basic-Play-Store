@@ -108,9 +108,9 @@ public class AdminController extends Controller {
     }
 
 
-    public Result deleteItem(String title) {
-        Item i = Item.find.byId(title);
-        Item.find.ref(title).delete();
+    public Result deleteItem (String id) {
+        Item i = Item.find.byId(id);
+        Item.find.ref(id).delete();
         flash("success", "Item has been deleted.");
 
         //Deleting image from folder.

@@ -2,7 +2,7 @@
 @AdminPages.adminMain("Admin Item", user) {
     @if(flash().containsKey("success")) {
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-12">
                 <div class="alert alert-success">
                     <strong>@flash().get("success")</strong>
                 </div>
@@ -28,10 +28,10 @@
         </div>
         <div class="m-header scene_element scene_element--fadein">
             <div class="col-lg-3 col-sm-12" id="imageSize">
-            @if(env.resource("public/images/Item/" + i.getItemId + ".jpg").isDefined) {
+            @if(env.resource("public/images/item/" + i.getItemId + ".jpg").isDefined) {
                 <img src="/assets/images/Item/@(i.getItemId + ".jpg")" />
             } else {
-                <img src="/assets/images/Item/noImage.jpg" />
+                <img src="/assets/images/item/noImage.jpg" />
             }
             </div>
         </div>
@@ -40,6 +40,8 @@
                 <p>Cost: €@i.getCost</p>
                 <p>Description: @i.getDescription</p>
                 <p>Category: @i.getCatagory</p>
+                <p><a class="btn btn-lg btn-danger" id="right-btn" href="@routes.AdminController.deleteItem(i.getItemId)" role="button" onclick="return confirmDel();">Delete</a></p>
+                <p><a class="btn btn-lg btn-primary" id="right-btn" href="@routes.AdminController.updateItem(i.getItemId)" role="button">Update</a></p>
             </div>
         </div>
     }
