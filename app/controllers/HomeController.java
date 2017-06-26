@@ -80,4 +80,9 @@ public class HomeController extends Controller {
         return redirect(controllers.routes.HomeController.index());
     }
 
+    public Result product(){
+        User u = getUserFromSession();
+        return ok(product.render(u));
+    }
+
 }
