@@ -1,17 +1,18 @@
 @(user: models.users.User, items: List[Item], i: Item, env: play.api.Environment)
-    @*
-    * Call the `main` template with two arguments. The first
-    * argument is a `String` with the title of the page, the second
-    * argument is an `Html` object containing the body of the page.
-    *@
-    @main("Product") {
+@*
+* Call the `main` template with two arguments. The first
+* argument is a `String` with the title of the page, the second
+* argument is an `Html` object containing the body of the page.
+*@
+@main("Product") {
 
     <div class="container">
 
             <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h3 id="homeHeading" style="font-size: 60px;padding-top: 30px;">@i.getTitle</h3>
+                <h3 id="homeHeading" style="font-size: 60px;
+                    padding-top: 30px;">@i.getTitle</h3>
             </div>
         </div>
             <!-- /.row -->
@@ -20,11 +21,11 @@
         <div class="row">
 
             <div class="col-md-8">
-                @if(env.resource("public/images/Items/" + i.getItemId + ".jpg").isDefined) {
-                    <img class="img-responsive"  src="/assets/images/Items/@(i.getItemId + ".jpg")" />
-                } else {
-                    <img src="/assets/images/Items/noImage.jpg" />
-                }
+            @if(env.resource("public/images/Items/" + i.getItemId + ".jpg").isDefined) {
+                <img class="img-responsive" src="/assets/images/Items/@(i.getItemId + ".jpg")" />
+            } else {
+                <img src="/assets/images/Items/noImage.jpg" />
+            }
             </div>
 
             <div class="col-md-4">
@@ -37,7 +38,8 @@
                     <li>Consectetur</li>
                     <li>Adipiscing Elit</li>
                 </ul>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll" style=" background-color: #6EC2F6;">Buy Now</a>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll" style=" background-color: #6EC2F6;">
+                    Buy Now</a>
             </div>
 
         </div>
@@ -49,31 +51,17 @@
             <div class="col-lg-12">
                 <h3 class="page-header">Other Packages</h3>
             </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
+            @for(i <- items) {
+                <div class="col-md-4 col-sm-10 hero-feature">
+                    <div class="thumbnail">
+                        @if(env.resource("public/images/Items/" + i.getItemId + ".jpg").isDefined) {
+                            <img id="thumbnail" src="/assets/images/Items/@(i.getItemId + ".jpg")" />
+                        } else {
+                            <img id="thumbnail" src="/assets/images/Items/noImage.jpg" />
+                        }
+                    </div>
+                </div>
+            }
         </div>
 
             <!-- jQuery -->
@@ -89,4 +77,4 @@
 
             <!-- Theme JavaScript -->
         <script src="js/creative.min.js"></script>
-    }
+}
