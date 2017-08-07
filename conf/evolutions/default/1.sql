@@ -9,6 +9,7 @@ create table item (
   cost                          double,
   description                   varchar(255),
   catagory                      varchar(255),
+  address                       varchar(255),
   constraint pk_item primary key (item_id)
 );
 create sequence id_gen;

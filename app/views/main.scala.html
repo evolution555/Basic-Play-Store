@@ -89,4 +89,24 @@
             </div>
                 <!-- /.container-fluid -->
         </nav>
-    @content
+        @content
+
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+            <!-- Bootstrap core JavaScript -->
+        <script src="@routes.Assets.versioned("javaScript/jquery.min.js")"></script>
+        <script src="@routes.Assets.versioned("tether/tether.min.js")"></script>
+        <script src="@routes.Assets.versioned("javaScript//bootstrap.min.js")"></script>
+
+            <!-- Plugin JavaScript -->
+        <script src="@routes.Assets.versioned("javaScript/jquery.easing.min.js")"></script>
+
+            <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+            <!-- Custom scripts for this template -->
+        <script src="@routes.Assets.versioned("javaScript/grayscale.min.js")"></script>
