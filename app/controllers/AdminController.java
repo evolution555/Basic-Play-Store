@@ -51,6 +51,7 @@ public class AdminController extends Controller {
         i.setTitle(df.get("title"));
         i.setDescription(df.get("description"));
         i.setCatagory(df.get("catagory"));
+        i.setAddress(df.get("address"));
         try {
             i.setCost(Double.parseDouble(df.get("cost")));
         } catch (NumberFormatException e) {
