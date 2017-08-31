@@ -29,7 +29,8 @@ public class HomeController extends Controller {
 
     public Result index() {
         User u = getUserFromSession();
-        return ok(index.render(u));
+        List<Testimony> allTest = Testimony.findAll();
+        return ok(index.render(u, env, allTest));
     }
 
     public Result login() {

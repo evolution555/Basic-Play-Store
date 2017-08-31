@@ -1,4 +1,4 @@
-@(user: models.users.User)
+@(user: models.users.User, env: play.api.Environment, testimony: List[Testimony])
 @*
 * Call the `main` template with two arguments. The first
 * argument is a `String` with the title of the page, the second
@@ -11,7 +11,7 @@
             <div class="header-content-inner">
                 <h1 id="homeHeading">Coach Conlon</h1>
                 <hr id="underline">
-                <p>Masters in health, fitness and body sculpting</p>
+                <p>Master in health, fitness and body sculpting</p>
                 <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>
         </div>
@@ -31,19 +31,21 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-diamond text-primary sr-icons" id="whiteIcons"></i>
-                        <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-paper-plane text-primary sr-icons" id="whiteIcons"></i>
+                        <span class="glyphicon glyphicon-heart" id="whiteIcons" aria-hidden="true" style="font-size: 55px;"></span>
                         <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-newspaper-o text-primary sr-icons" id="whiteIcons"></i>
+                        <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="service-box">
+
+                        <span class="glyphicon glyphicon-fire" id="whiteIcons" aria-hidden="true" style="font-size: 55px;"></span>
+
                         <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
                     </div>
                 </div>
@@ -66,17 +68,24 @@
     </section>
 
     <section class="no-padding" id="portfolio">
+    @for(t <- testimony) {
         <div class="container-fluid">
             <div class="col-lg-6 col-sm-12" style="padding-top: 0.5em;">
                 <a href class="portfolio-box">
-                    <img src="/assets/images/1.jpeg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption" style="background: black;
-                        opacity: 0">
-                        <div class="portfolio-box-caption-content">
+                    @if(env.resource("public/images/" + t.getTitle + ".jpeg").isDefined) {
+                        <img class="img-responsive" src="/assets/images/@(t.getTitle + ".jpeg")" />
+                    } else {
+                        <img class="img-responsive" src="/assets/images/noImage.jpg" />
+
+                    }
+                <div class="portfolio-box-caption" style="background: black;
+                    opacity: 0">
+                    <div class="portfolio-box-caption-content">
                         </div>
-                    </div>
+                </div>
                 </a>
-            </div>  <!-- Img -->
+            </div>
+                <!-- Img -->
 
             <div id="visContent" class="col-lg-6 col-sm-12" style="padding-top: 0.5em;">
                 <a id="visContent" class="portfolio-box" style="background: #191D1F;
@@ -86,42 +95,16 @@
                         opacity: 1;" >
                         <div class="portfolio-box-caption-content">
                             <div id="homeHeading2">
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                            @t.getDescription
                             </div>
                         </div>
                     </div>
                 </a>
-            </div>  <!-- Text -->
-
+            </div>
+                <!-- Text -->
 
         </div>
-        <div class="container-fluid">
-            <div id="visContent" class="col-lg-6 col-sm-12" style="padding-top: 0.5em;">
-                <a id="visContent" class="portfolio-box" style="background: #191D1F;
-                    opacity: 1;">
-                    <img class="img-responsive" alt="" style="background-color: black;">
-                    <div class="portfolio-box-caption" style="background: #191D1F;
-                        opacity: 1;" >
-                        <div class="portfolio-box-caption-content">
-                            <div id="homeHeading2">
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>  <!-- Text -->
-
-            <div class="col-lg-6 col-sm-12" style="padding-top: 0.5em;">
-                <a href class="portfolio-box">
-                    <img src="/assets/images/1.jpeg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption" style="background: black;
-                        opacity: 0">
-                        <div class="portfolio-box-caption-content">
-                        </div>
-                    </div>
-                </a>
-            </div>  <!-- Img -->
-        </div>
+    }
     </section>
 
     <section class="bg-primary" id="contact">

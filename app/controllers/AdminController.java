@@ -120,6 +120,50 @@ public class AdminController extends Controller {
         return redirect(routes.AdminController.adminItems());
     }
 
+    public Result adminTestimonys(){
+        User u = HomeController.getUserFromSession();
+        List<Testimony> allTest = Testimony.findAll();
+        return ok(adminTestimonys.render(u, env, allTest));
+    }
+    public Result adminAddTestimony(){
+        Testimony t = new Testimony();
+        User u = HomeController.getUserFromSession();
+        return ok(adminAddTestimony.render(t, u, null));
+    }
+    public Result addTestimonySubmit() {
+        DynamicForm df = formFactory.form().bindFromRequest();
+        Testimony i = new Testimony();
+        i.setTitle(df.get("title"));
+        i.setDescription(df.get("description"));
+
+        String saveImageMsg;
+
+        List<Testimony> allTestimonys = Testimony.findAll();
+        for (Testimony testimony : allTestimonys) {
+            if (testimony.getTitle().equals(i.getTitle())) {
+                return badRequest(adminAddTestimony.render(i, HomeController.getUserFromSession(), "Testimony already in database."));
+            }
+        }
+        i.save();
+
+        Http.MultipartFormData data = request().body().asMultipartFormData();
+        FilePart image = data.getFile("upload");
+
+        flash("success", saveFile(i.getTitle(), image));
+        return redirect(routes.AdminController.adminTestimonys());
+    }
+
+    public Result deleteTestimony (String id) {
+        Testimony t = Testimony.find.byId(id);
+        Testimony.find.ref(id).delete();
+        flash("success", "Testimony has been deleted.");
+
+        //Deleting image from folder.
+        File file = new File("public/images/" + t.getTitle() + ".jpg");
+        file.delete();
+        return redirect(routes.AdminController.adminTestimonys());
+    }
+
     //Image Save
     public String saveFile(String title, FilePart<File> uploaded) {
         if (uploaded != null) {
@@ -135,7 +179,7 @@ public class AdminController extends Controller {
                 }
 
                 File file = uploaded.getFile();
-                file.renameTo(new File("public/images/Items/" + title + "." + extension));
+                file.renameTo(new File("public/images/" + title + "." + extension));
             }
             return "Item Added";
         }
