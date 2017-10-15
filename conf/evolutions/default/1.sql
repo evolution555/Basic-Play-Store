@@ -9,9 +9,18 @@ create table item (
   cost                          double,
   description                   varchar(255),
   catagory                      varchar(255),
+  address                       varchar(255),
   constraint pk_item primary key (item_id)
 );
 create sequence id_gen;
+
+create table testimony (
+  id                            varchar(255) not null,
+  title                         varchar(255),
+  description                   varchar(255),
+  constraint pk_testimony primary key (id)
+);
+create sequence id;
 
 create table user (
   email                         varchar(255) not null,
@@ -26,6 +35,9 @@ create table user (
 
 drop table if exists item;
 drop sequence if exists id_gen;
+
+drop table if exists testimony;
+drop sequence if exists id;
 
 drop table if exists user;
 

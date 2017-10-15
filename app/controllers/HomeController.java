@@ -29,7 +29,8 @@ public class HomeController extends Controller {
 
     public Result index() {
         User u = getUserFromSession();
-        return ok(index.render(u));
+        List<Testimony> allTest = Testimony.findAll();
+        return ok(index.render(u, env, allTest));
     }
 
     public Result login() {
@@ -78,6 +79,13 @@ public class HomeController extends Controller {
         User.create(newUserForm.get("email"), newUserForm.get("name"), newUserForm.get("role"), newUserForm.get("password"));
         flash("success", "Your account has been successfully created. Please sign in with your details.");
         return redirect(controllers.routes.HomeController.index());
+    }
+
+    public Result product(String id){
+        User u = getUserFromSession();
+        Item item = Item.find.byId(id);
+        List<Item> allItems = Item.findAll();
+        return ok(product.render(u, allItems,item ,env));
     }
 
 }

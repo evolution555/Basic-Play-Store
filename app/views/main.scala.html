@@ -25,11 +25,13 @@
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Tangerine:700" rel="stylesheet">
 
             <!-- Plugin CSS -->
         <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
 
             <!-- Theme CSS -->
         <link href="css/creative.min.css" rel="stylesheet">
@@ -41,6 +43,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+        <style>
+            /* Ensure elements are hidden while ScrollEntrance is loading */
+            js. [data-entrance] { visibility: hidden; }
+        </style>
     </head>
 
     <body id="page-top">
@@ -75,7 +81,7 @@
                         </li>
 
                         <li>
-                            <a class="page-scroll" href="@routes.HomeController.index()#portfolio">Gallery</a>
+                            <a class="page-scroll" href="@routes.HomeController.index()#portfolio">Testimonial</a>
                         </li>
                         <li>
                             <a class="page-scroll" href="@routes.HomeController.index()#contact">Contact</a>
@@ -89,4 +95,33 @@
             </div>
                 <!-- /.container-fluid -->
         </nav>
-    @content
+        @content
+
+
+            <!-- Include jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+            <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+        <script>
+        function goBack() {
+            window.history.back();
+        }
+</script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+
+            <!--Created by Evan-->
+            <!-- Plugin JavaScript -->
+        <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+        <script src="@routes.Assets.versioned("javaScript/jquery.easing.min.js")"></script>
+
+
+            <!-- Custom scripts for this template -->
+        <script src="@routes.Assets.versioned("javaScript/grayscale.min.js")"></script>
+    </body>
+</html>

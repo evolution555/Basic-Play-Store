@@ -17,6 +17,7 @@ public class Item extends Model{
     private double cost;
     private String description;
     private String catagory;
+    private String address;
 
 
     public static Finder<String, Item> find = new Finder<String, Item>(Item.class);
@@ -63,5 +64,13 @@ public class Item extends Model{
 
     public void setCatagory(String catagory) {
         this.catagory = catagory;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }

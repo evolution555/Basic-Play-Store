@@ -1,134 +1,173 @@
-@(user: models.users.User)
-    @*
-    * Call the `main` template with two arguments. The first
-    * argument is a `String` with the title of the page, the second
-    * argument is an `Html` object containing the body of the page.
-    *@
-    @main("Home") {
+@(user: models.users.User, env: play.api.Environment, testimony: List[Testimony])
+@*
+* Call the `main` template with two arguments. The first
+* argument is a `String` with the title of the page, the second
+* argument is an `Html` object containing the body of the page.
+*@
+@main("Home") {
 
-        <header id="welcome">
-            <div class="header-content">
-                <div class="header-content-inner">
+    <header id="welcome">
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="m-header scene_element scene_element--fadein">
                     <h1 id="homeHeading">Coach Conlon</h1>
+                </div>
+                <hr id="underline">
+                <div class="m-header scene_element scene_element--fadein">
+                    <p>Master in health, fitness and body sculpting</p>
+                </div>
+                <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 id="homeHeading">What we do!</h1>
                     <hr id="underline">
-                    <p>Masters in health, fitness and body sculpting</p>
-                    <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
                 </div>
             </div>
-        </header>
-
-
-        <section id="services">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h1 id="homeHeading">What we do!</h1>
-                        <hr id="underline">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="service-box">
+                        <span class="glyphicon glyphicon-heart" id="whiteIcons" aria-hidden="true" style="font-size: 55px;"></span>
+                        <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 text-center">
-                        <div class="service-box">
-                            <i class="fa fa-4x fa-diamond text-primary sr-icons" id="whiteIcons"></i>
-                            <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
-                        </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons" id="whiteIcons"></i>
+                        <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
                     </div>
-                    <div class="col-lg-4 col-md-6 text-center">
-                        <div class="service-box">
-                            <i class="fa fa-4x fa-paper-plane text-primary sr-icons" id="whiteIcons"></i>
-                            <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 text-center">
-                        <div class="service-box">
-                            <i class="fa fa-4x fa-newspaper-o text-primary sr-icons" id="whiteIcons"></i>
-                            <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
-                        </div>
+                </div>
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="service-box">
+
+                        <span class="glyphicon glyphicon-fire" id="whiteIcons" aria-hidden="true" style="font-size: 55px;"></span>
+
+                        <a href="#about" id="buttons" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="bg-primary" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <h2 class="section-heading">We've got what you need!</h2>
-                        <hr id="underline">
-                        <p class="text-faded">
-                            Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                        <a href="shop.html" class="page-scroll btn btn-default btn-xl sr-button">Shop Now!</a>
-                    </div>
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">We've got what you need!</h2>
+                    <hr id="underline">
+                    <p class="text-faded">
+                        Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+                    <a href="shop.html" class="page-scroll btn btn-default btn-xl sr-button">Shop Now!</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="no-padding" id="portfolio">
-            <div class="container-fluid">
-                <div class="row no-gutter popup-gallery">
-                    <div class="col-lg-6 col-sm-12">
-                        <a href class="portfolio-box">
-                            <img src="/assets/images/1.jpeg" class="img-responsive" alt="">
-                            <div class="portfolio-box-caption" style="background: black;">
-                                <div class="portfolio-box-caption-content">
-                                    <div id="homeHeading" class="project-category text-faded">
-                                        Images
-                                    </div>
-                                </div>
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid" style=" padding-right: 0px;
+            padding-left: 0px;
+        ">
+            <div class="col-lg-6 col-sm-12" style="padding-top: 0.5em;">
+                <a href class="portfolio-box">
+                        <!-- Carousel start -->
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+
+                            <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="/assets/images/backGround.jpeg" alt="Los Angeles">
                             </div>
+
+                            <div class="item">
+                                <img src="/assets/images/1.jpeg" alt="Chicago">
+                            </div>
+
+                            <div class="item">
+                                <img src="/assets/images/2.jpeg" alt="New York">
+                            </div>
+                        </div>
+
+                            <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
                         </a>
                     </div>
-                    <div id="visContent" class="col-lg-6 col-sm-12">
-                        <a id="visContent" href="img/2.jpeg" class="portfolio-box">
-                            <img src="/assets/images/2.jpeg" class="img-responsive" alt="">
-                            <div class="portfolio-box-caption" style="background: black;">
-                                <div class="portfolio-box-caption-content">
-                                    <div id="homeHeading" class="project-category text-faded">
-                                        Videos
-                                    </div>
-                                </div>
+                        <!--Carousel End -->
+                </a>
+            </div>
+
+                <!-- Text Box -->
+            <div id="visContent" class="col-lg-6 col-sm-12" style="padding-top: 0.5em;
+                padding-bottom: 7px;">
+                <a id="visContent" class="portfolio-box" style="background: #191D1F;
+                    opacity: 1;">
+                    <img class="img-responsive" alt="" style="background-color: black;">
+                    <div class="portfolio-box-caption" style="background: #191D1F;
+                        opacity: 1;" >
+                        <div class="portfolio-box-caption-content">
+                            <div id="homeHeading2">
+                                Insert Info here
                             </div>
-                        </a>
+                        </div>
                     </div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="bg-primary" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Get in touch!</h2>
+                    <hr id="underline">
+                    <p class="text-faded">
+                        Ready to start your journey! Give us a call or send us an email.</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x sr-contact" id="whiteIcons"></i>
+                    <p style="color: white;">085-129-8951</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact" id="whiteIcons"></i>
+                    <p><a href="mailto:your-emailyour-domain.com" style="color: white;">
+                        sabrinaschealthgroup.com</a></p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="bg-primary" id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <h2 class="section-heading">Let's Get In Touch!</h2>
-                        <hr id="underline">
-                        <p class="text-faded">
-                            Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
-                    </div>
-                    <div class="col-lg-4 col-lg-offset-2 text-center">
-                        <i class="fa fa-phone fa-3x sr-contact" id="whiteIcons"></i>
-                        <p style="color: white;">+353-85-129-8951</p>
-                    </div>
-                    <div class="col-lg-4 text-center">
-                        <i class="fa fa-envelope-o fa-3x sr-contact" id="whiteIcons"></i>
-                        <p><a href="mailto:your-emailyour-domain.com" style="color: white;">
-                            sabrinaschealthgroup.com</a></p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
 
-            <!-- jQuery -->
-        <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-            <!-- Bootstrap Core JavaScript -->
-        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-            <!-- Plugin JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-        <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-        <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-            <!-- Theme JavaScript -->
-        <script src="js/creative.min.js"></script>
-    }
+        <!-- Theme JavaScript -->
+    <script src="js/creative.min.js"></script>
+}
